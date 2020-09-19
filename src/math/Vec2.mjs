@@ -1,11 +1,11 @@
 import createEveryTest from './../util/createEveryTest.mjs'
 
-const _isBigIntOrNumber = 
+const _isBigIntOrNumber =
   createEveryTest([
     v => typeof v === 'number' || typeof v === 'bigint'
   ])
 
-const _isArrayAtLeastLen2 = 
+const _isArrayAtLeastLen2 =
   createEveryTest([
     v => Array.isArray(v),
     v => v.length >= 2
@@ -21,10 +21,7 @@ export default class Vec2 {
         y
       })
     } else {
-
-      throw new Error (
-        'new Vec2(x, y): "parameter x and y must be of type number or bigint"'
-      )
+      throw new Error('new Vec2(x, y): "parameter x and y must be of type number or bigint"')
     }
   }
 
@@ -33,17 +30,14 @@ export default class Vec2 {
   }
 
   get y () {
-    _private.get(this).y
+    return _private.get(this).y
   }
 
   set x (v) {
     if (_isBigIntOrNumber(v)) {
       _private.get(this).x = v
     } else {
-
-      throw new Error (
-        'Vec2.x: "x must be of type number or bigint"'
-      )
+      throw new Error('Vec2.x: "x must be of type number or bigint"')
     }
   }
 
@@ -51,10 +45,7 @@ export default class Vec2 {
     if (_isBigIntOrNumber(v)) {
       _private.get(this).y = v
     } else {
-
-      throw new Error (
-        'Vec2.y: "y must be of type number or bigint"'
-      )
+      throw new Error('Vec2.y: "y must be of type number or bigint"')
     }
   }
 
@@ -84,7 +75,7 @@ export default class Vec2 {
     }
 
     if (
-      b === null && 
+      b === null &&
       _isArrayAtLeastLen2(a)
     ) {
       this.x += a[0]
@@ -120,7 +111,7 @@ export default class Vec2 {
     }
 
     if (
-      b === null && 
+      b === null &&
       _isArrayAtLeastLen2(a)
     ) {
       this.x -= a[0]
@@ -156,7 +147,7 @@ export default class Vec2 {
     }
 
     if (
-      b === null && 
+      b === null &&
       _isArrayAtLeastLen2(a)
     ) {
       this.x *= a[0]
@@ -192,7 +183,7 @@ export default class Vec2 {
     }
 
     if (
-      b === null && 
+      b === null &&
       _isArrayAtLeastLen2(a)
     ) {
       this.x /= a[0]
