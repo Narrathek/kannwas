@@ -1,0 +1,25 @@
+{
+  "name": "kannwas",
+  "version": "1.0.0",
+  "description": "simple helper library to create 2D canvas games",
+  "main": "src/kannwas.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Narrathek/kannwas.git"
+  },
+  "keywords": [
+    "canvas",
+    "game",
+    "javascript",
+    "kannwas"
+  ],
+  "author": "Simon Petereit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Narrathek/kannwas/issues"
+  },
+  "homepage": "https://github.com/Narrathek/kannwas#readme"
+}
