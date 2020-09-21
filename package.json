@@ -1,10 +1,11 @@
 {
   "name": "kannwas",
+  "type": "module",
   "version": "1.0.0",
   "description": "simple helper library to create 2D canvas games",
   "main": "src/kannwas.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "postinstall": "node ./node_modules/frontend-dependencies/index.js",
     "lint": "standard \"src/*.mjs\" \"src/util/*.mjs\" \"src/math/*.mjs\""
   },
@@ -36,6 +37,7 @@
     "frontend-dependencies": "^1.1.8"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "standard": "^14.3.4"
   }
 }
