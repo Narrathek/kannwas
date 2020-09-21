@@ -25,6 +25,14 @@ export default class Vec2 {
     }
   }
 
+  static random (rdnFn = Math.random) {
+    if (typeof rdnFn === 'function' && _isBigIntOrNumber(rdnFn())) {
+      return new Vec2(rdnFn(), rdnFn())
+    } else {
+      throw new Error('Vec2.random(rdnFn): "rdnFn must be a function wich returns a value of type number or bigint"')
+    }
+  }
+
   get x () {
     return _private.get(this).x
   }
@@ -191,5 +199,79 @@ export default class Vec2 {
 
       return this
     }
+  }
+
+  clone () {
+    return new Vec2(this.x, this.y)
+  }
+
+  len () {
+    return Math.sqrt(this.x ** 2 + this.y ** 2)
+  }
+
+  sqrLen () {
+    return this.x ** 2 + this.y ** 2
+  }
+
+  setDir (angle, dist) {
+    if (_isArrayAtLeastLen2(angle) && _isArrayAtLeastLen2(dist)) {
+      this.x = dist * Math.cos(angle / 360 * Math.PI * 2)
+      this.y = dist * Math.sin(angle / 360 * Math.PI * 2)
+    }
+
+    return this
+  }
+
+  scale (f) {
+    if (_isBigIntOrNumber(f)) {
+      this.x *= f
+      this.y *= f
+    }
+
+    return this
+  }
+
+  distance (other) {
+    if (other instanceof Vec2) {
+      const dx = other.x - this.x
+      const dy = other.y - this.y
+
+      return Math.sqrt(dx ** 2 + dy ** 2)
+    }
+  }
+
+  sqrDistance (other) {
+    if (other instanceof Vec2) {
+      const dx = other.x - this.x
+      const dy = other.y - this.y
+
+      return dx ** 2 + dy ** 2
+    }
+  }
+
+  dot (other) {
+    if (other instanceof Vec2) {
+      return this.x * other.x + this.y * other.y
+    }
+  }
+
+  normalize () {
+    const len = this.len()
+    len > 0 && this.scale(1 / len)
+
+    return this
+  }
+
+  limit (f) {
+    if (_isBigIntOrNumber(f)) {
+      const len = this.len()
+      len > f && len > 0 && this.scale(f / len)
+    }
+
+    return this
+  }
+
+  toString () {
+    return `Vec2(${this.x}, ${this.y})`
   }
 }
